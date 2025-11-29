@@ -1,0 +1,180 @@
+Zadanie domowe 4
+
+
+
+Utwórz repozytorium o nazwie goit-react-hw-04.
+Przesyłając pracę domową, podaj dwa linki: jeden do plików źródłowych i jeden do strony roboczej zadania na Vercel.
+Projekt powinien zostać stworzony przy użyciu Vite.
+Podczas uruchamiania kodu zadania w konsoli nie powinny pojawiać się żadne błędy ani ostrzeżenia.
+Każdy komponent musi mieć swój własny plik w folderze src/components.
+Do eksportowania komponentów należy używać domyślnego eksportu (export default).
+Do wykonywania żądań HTTP trzeba używać biblioteki axios.
+Kod JS powinien być czysty i przejrzysty, należy używać Prettier.
+Stylizacja powinna być wykonywana za pomocą modułów CSS.
+
+
+Wyszukiwanie obrazów
+
+
+
+Napisz aplikację do wyszukiwania obrazów na podstawie słowa kluczowego. Obejrzyj film demonstracyjny aplikacji.
+
+
+
+
+
+Usługa wyszukiwania obrazów
+
+
+
+W tym zadaniu będziesz używać żądań HTTP do pobierania obrazów ze strony internetowej Unsplash.
+
+Zarejestruj konto dewelopera, aby uzyskać dostęp do dokumentacji i interakcji z backendem.
+Utwórz zapis o swojej aplikacji w usłudze (blok New Application). Jest to krok obowiązkowy. Wymyśl nazwę dla swojej aplikacji, na przykład Image Gallery, Photo Search lub coś podobnego.
+Po utworzeniu zapisu o aplikacji, na jej stronie uzyskaj klucz dostępu dla żądań HTTP (Access Key) w sekcji Keys.
+
+
+W przypadku darmowej (Demo) wersji aplikacji, liczba żądań HTTP jest ograniczona do 50 na godzinę, więc należy o tym pamiętać i nie wykonywać zbyt wielu niepotrzebnych żądań!
+
+
+Przydatne sekcje dokumentacji:
+
+Jak utworzyć adres URL żądania
+Jak dodać klucz dostępu do żądań
+Wyszukiwanie obrazów według słów kluczowych
+
+
+Odpowiedź z backendu przychodzi jako obiekt ze wszystkimi niezbędnymi informacjami. Znajdziesz tam tablicę obrazów i całkowitą liczbę grup do paginacji. Każdy obraz w tablicy jest reprezentowany jako obiekt z wieloma informacjami. Przede wszystkim interesują nas linki do różnych wersji obrazu we właściwości urls. Użyj wersji small dla kart galerii i wersji regular dla okna modalnego.
+
+
+
+Wyjdź poza zadanie i użyj danych z obiektów, aby wyświetlić bardziej interesujące informacje w oknie modalnym. Na przykład autora zdjęcia, liczbę polubień, opis itp.
+
+
+Komponenty
+
+
+
+W tym zadaniu będziesz musiał wybrać następujące komponenty i dodać podstawową stylizację do interfejsu według własnych upodobań. Jako przykład weźmy film demonstracyjny aplikacji.
+
+
+
+
+
+
+Header z formularzem wyszukiwania
+
+
+
+Komponent SearchBar przyjmuje jeden prop onSubmit — funkcję do przekazywania wartości input podczas przesyłania formularza. Tworzy ona element DOM o następującej strukturze.
+
+
+
+<header>
+  <form>
+    <input
+      class="input"
+      type="text"
+      autocomplete="off"
+      autofocus
+      placeholder="Search images and photos"
+    />
+		<button type="submit">Search</button>
+  </form>
+</header>
+
+
+
+Jeśli po kliknięciu przycisku przesyłania pole tekstowe jest puste, należy wyświetlić komunikat o konieczności wprowadzenia tekstu w celu wyszukania obrazów. To sprawdzenie jest wykonywane w komponencie SearchBar w momencie przesyłania formularza. Do powiadomień użyj biblioteki React Hot Toast.
+
+
+
+Galeria obrazów
+
+
+
+Komponent ImageGallery jest listą kart obrazów, która tworzy element DOM o następującej strukturze.
+
+
+
+<ul>
+	{/* Zestaw elementów listy z obrazami */}
+	<li>
+		<div>
+		  <img src="" alt="" />
+		</div>
+	</li>
+</ul>
+
+
+
+Galeria powinna być renderowana tylko wtedy, gdy istnieją załadowane obrazy. Dobrą praktyką jest niedołączanie elementu li do komponentu karty, ale pozostawienie go jako części komponentu galerii.
+
+
+
+Karta obrazu
+
+
+
+Komponent ImageCard jest renderowany w elemencie galerii. Tworzy on element DOM o następującej strukturze.
+
+
+
+<div>
+  <img src="" alt="" />
+</div>
+
+
+
+Wskaźnik ładowania
+
+
+
+Komponent Loader jest wyświetlany na dole galerii podczas ładowania obrazów. Możesz użyć dowolnego gotowego komponentu, takiego jak react-loader-spinner lub innego.
+
+
+
+Podczas ładowania obrazów wskaźnik ładowania nie powinien zastępować galerii, ale po prostu renderować się pod nią. Będzie to krytyczne podczas dodawania obrazów do już załadowanych.
+
+
+
+Komunikat o błędzie
+
+
+
+Komponent ErrorMessage jest renderowany zamiast galerii obrazów w przypadku błędu żądania HTTP. Wystarczy, że jest to wiadomość tekstowa.
+
+
+
+Przycisk ładowania dodatkowych obrazów
+
+
+
+Komponent LoadMoreBtn renderuje przycisk z tekstem „Load more”. Po kliknięciu przycisku, następna porcja obrazów powinna zostać załadowana i wyrenderowana razem z poprzednimi.
+
+Przycisk powinien być renderowany tylko wtedy, gdy istnieją załadowane obrazy.
+Jeśli tablica obrazów jest pusta, przycisk nie będzie renderowany.
+
+
+Okno modalne
+
+
+
+Komponent ImageModal powinien być renderowany wewnątrz komponentu App i otrzymywać wszystkie niezbędne dane i funkcje poprzez propsy z App.
+
+
+
+Po kliknięciu elementu galerii powinno otworzyć się okno modalne ImageModal z ciemnym tłem, wyświetlające obraz w dużym formacie. Okno modalne powinno być skonfigurowane w taki sposób, aby zamykało się po naciśnięciu klawisza ESC lub kliknięciu poza jego obszarem. Aby zaimplementować funkcjonalność okna modalnego, należy użyć biblioteki React Modal.
+
+Zadanie w toku
+
+Termin
+23:45, 8 wrz 2024
+
+
+Oddaj pracę domową!
+Prześlij link do swojej pracy domowej tutaj
+
+
+Prześlij plik o rozmiarze do 150 Mb
+
