@@ -5,10 +5,12 @@ const SearchBar = () => {
 
     return(
     <form>
-    <input
-    onChange={(e) => setQuery(e.target.value)}
+    <input  className="input"
       type="text"
-    value={query}
+      autoComplete="off"
+      autoFocus
+    onChange={(e) => setQuery(e.target.value)}
+     value={query}
       placeholder="Search images and photos"
     />
 		<button type="submit">Search</button>

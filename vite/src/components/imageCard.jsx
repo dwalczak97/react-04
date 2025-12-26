@@ -1,10 +1,4 @@
-const ImageCard = () =>{
-    return (
-<div>
+
+{/* <div>
   <img src="" alt="" />
-</div>
-
-    )
-};
-
-export default ImageCard;
+</div> */}
