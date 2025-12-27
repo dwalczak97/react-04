@@ -35,30 +35,43 @@ function App() {
 //     fetchArticles();
 //   }, []);
 
-useEffect(() => {
-  async function fetchImage () {
+// useEffect(() => {
+//   async function fetchImage () {
+//     try {
+//       setLoading(true);
+//       const data = await fetchPhoto(query);
+//       setImages(data)
+//      }
+//     catch (error) {
+//       setError (true);
+//     }
+//     finally{
+//       setLoading(false);
+//     } }
+//     fetchImage();
+//     console.log(images)
+// }, []);
+	const handleSearch = async (query) => {
     try {
+			setArticles([]);
+			setError(false);
       setLoading(true);
-      const data = await fetchPhoto(query);
-      setImages(data)
-     }
-    catch (error) {
-      setError (true);
-    }
-    finally{
+      const data = await fetchPhoto(query)
+      setImages(data);
+    } catch (error) {
+      setError(true);
+    } finally {
       setLoading(false);
-    } }
-    fetchImage();
-    console.log(images)
-}, []);
-
+     console.log(images)
+    }
+  };
   return (
     <>
      {loading && <p>Loading data, please wait...</p>}
       {error && (
         <p>Whoops, something went wrong! Please try reloading this page!</p>
       )}
-    <SearchBar/>
+    <SearchBar onSearch={handleSearch} />
     {/* <ImageGallery img={images}/> */}
     
 {images.length > 0 && <ImageGallery img={images} />}

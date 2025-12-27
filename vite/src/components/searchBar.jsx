@@ -1,16 +1,28 @@
 import {useState} from 'react'
 
-const SearchBar = () => {
+const SearchBar = ({onSearch}) => {
     const [query, setQuery] = useState("")
 
+	const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+		setQuery(form.elements.query.value);
+    onSearch(query);
+    form.reset();
+
+    return console.log(query)
+    
+  };
+
     return(
-    <form>
+    
+    <form onSubmit={handleSubmit}>
     <input  className="input"
       type="text"
       autoComplete="off"
       autoFocus
-    onChange={(e) => setQuery(e.target.value)}
-     value={query}
+      name="query"
+  
       placeholder="Search images and photos"
     />
 		<button type="submit">Search</button>
@@ -21,20 +33,5 @@ const SearchBar = () => {
 export default SearchBar;
 
 
-// export const SearchForm = ({ onSearch }) => {
-  
-// 	const handleSubmit = (evt) => {
-//     evt.preventDefault();
-//     const form = evt.target;
-// 		const topic = form.elements.topic.value;
-//     onSearch(topic);
-//     form.reset();
-//   };
 
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" name="topic" placeholder="Search articles..." />
-//       <button>Search</button>
-//     </form>
-//   );
-// }
+9
