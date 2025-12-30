@@ -10,7 +10,7 @@ const SearchBar = ({onSearch}) => {
     onSearch(query);
     form.reset();
 
-    return console.log(query)
+ console.log(query)
     
   };
 

@@ -63,10 +63,10 @@ function App() {
       return error;
     } finally {
       setLoading(false);
-     console.log(images)
-    }
   };
-  return (
+    
+  };
+  return( 
     <>
      {loading && <p>Loading data, please wait...</p>}
       {error && (
@@ -80,6 +80,8 @@ function App() {
 {images.length > 0 && <ImageGallery img={images} />}
     </>
   )
-}
+
+};
+
 
 export default App
