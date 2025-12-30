@@ -1,22 +1,27 @@
 import axios from "axios"
 
-axios.defaults.baseURL = 'https://api.unsplash.com';
-  const API_KEY = 'aMCg-Pgc70Fh4ZPhdk65VnjUyKpVWhniDOpL6tT17es'
+// axios.defaults.baseURL = 'https://api.unsplash.com';
+  // const API_KEY = 'aMCg-Pgc70Fh4ZPhdk65VnjUyKpVWhniDOpL6tT17es'
+const apiUrl = "https://rickandmortyapi.com/api/character"
+// const fetchPhoto = async (query = '') => {
+//     //  const perPage = 9;
+//     const resp = await axios.get('/search/photos', {
+//         params: {
+//             q: query
+//              },
+//          headers: {
+//             Authorization: `Client-ID ${API_KEY}` // Dodaj klucz w nagłówku
+//           }
+//     });
 
-const fetchPhoto = async (query = '') => {
-    //  const perPage = 9;
-    const resp = await axios.get('/search/photos', {
-        params: {
-            q: query
-             },
-         headers: {
-            Authorization: `Client-ID ${API_KEY}` // Dodaj klucz w nagłówku
-          }
-    });
-
-    return resp.data;
-//   return  query,  resp.data;
-};
+//     return resp.data;
+// //   return  query,  resp.data;
+// }; 
+const fetchPhoto = async () => {
+  const resp = await axios.get(apiUrl)
+  console.log(resp.data);
+  return (resp.data.results)
+}
 
 export default fetchPhoto;
 
