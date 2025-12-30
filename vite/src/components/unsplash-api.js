@@ -1,9 +1,9 @@
 import axios from "axios"
 
 axios.defaults.baseURL = 'https://api.unsplash.com';
-  const API_KEY = 'ab2-XHdLJySYjnDJEpkdyhr8vMOkgOfxSVBDrY89JGw'
+  const API_KEY = 'aMCg-Pgc70Fh4ZPhdk65VnjUyKpVWhniDOpL6tT17es'
 
-const fetchPhoto = async (query) => {
+const fetchPhoto = async (query = '') => {
     //  const perPage = 9;
     const resp = await axios.get('/search/photos', {
         params: {
@@ -14,9 +14,9 @@ const fetchPhoto = async (query) => {
           }
     });
 
-    return resp.data.hits
+    return resp.data;
 //   return  query,  resp.data;
-}
+};
 
 export default fetchPhoto;
 

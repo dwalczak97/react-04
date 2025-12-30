@@ -16,7 +16,7 @@ function App() {
   //  useEffect(() => {
 	
   //   fetchPhoto();
-  //   console.log(resp.data.hits)
+   
   // }, []);
 // useEffect(() => {
 //     async function fetchArticles() {
@@ -50,16 +50,17 @@ function App() {
 //     } }
 //     fetchImage();
 //     console.log(images)
-// }, []);
-	const handleSearch = async (query) => {
+// // }, []);
+	const handleSearch = async () => {
     try {
 			setArticles([]);
 			setError(false);
       setLoading(true);
-      const data = await fetchPhoto(query)
-      setImages(data);
+      const results = await fetchPhoto(query)
+      setImages(results);
     } catch (error) {
       setError(true);
+      return error;
     } finally {
       setLoading(false);
      console.log(images)
@@ -71,6 +72,8 @@ function App() {
       {error && (
         <p>Whoops, something went wrong! Please try reloading this page!</p>
       )}
+
+        {/* <SearchBar  /> */}
     <SearchBar onSearch={handleSearch} />
     {/* <ImageGallery img={images}/> */}
     
